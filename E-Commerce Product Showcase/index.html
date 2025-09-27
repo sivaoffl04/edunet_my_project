@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ModernShop - Premium Product Gallery</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <!-- Sticky Header Navigation -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="container">
+          <div class="nav-brand">
+            <h1 class="logo">ModernShop</h1>
+            <span class="tagline">Premium Collection</span>
+          </div>
+          
+          <div class="nav-filters">
+            <button class="filter-btn active" data-filter="all">
+              <span class="btn-text">All</span>
+              <div class="btn-ripple"></div>
+            </button>
+            <button class="filter-btn" data-filter="electronics">
+              <span class="btn-text">Electronics</span>
+              <div class="btn-ripple"></div>
+            </button>
+            <button class="filter-btn" data-filter="fashion">
+              <span class="btn-text">Fashion</span>
+              <div class="btn-ripple"></div>
+            </button>
+            <button class="filter-btn" data-filter="food">
+              <span class="btn-text">Food</span>
+              <div class="btn-ripple"></div>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+          <h2 class="hero-title">Discover Premium Products</h2>
+          <p class="hero-subtitle">Curated collection of the finest items for modern lifestyle</p>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+          <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically inserted here -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="productModal">
+        <button class="modal-close" id="modalClose">
+          <span class="close-icon">&times;</span>
+        </button>
+        
+        <div class="modal-content">
+          <div class="modal-image-container">
+            <img class="modal-image" id="modalImage" src="" alt="" />
+          </div>
+          
+          <div class="modal-info">
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-price" id="modalPrice"></p>
+            <div class="modal-description" id="modalDescription"></div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart">
+                <span class="btn-text">Add to Cart</span>
+                <div class="btn-ripple"></div>
+              </button>
+              <button class="btn btn-secondary wishlist">
+                <span class="btn-text">♡ Wishlist</span>
+                <div class="btn-ripple"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+  </body>
+</html>
