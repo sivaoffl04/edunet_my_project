@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURATION ---
-    const apiKey = '7f41639de944b72d978640a149493b8d'; // Api key for OpenWeatherMap
+    const apiKey = 'Enter Your Api'; // Api key for OpenWeatherMap
 
     // --- DOM ELEMENT REFERENCES ---
     const searchForm = document.getElementById('search-form');
@@ -224,4 +224,5 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     init();
+
 });
