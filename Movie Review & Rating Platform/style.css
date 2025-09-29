@@ -1,0 +1,460 @@
+
+:root {
+    /* Modern Color Palette: Neutral backgrounds with bright green accent for vibrancy */
+    --light-bg: #f8fafc; /* Softer light background for minimalism */
+    --light-card-bg: #ffffff;
+    --light-text: #0f172a; /* Darker text for better contrast */
+    --light-subtext: #475569;
+    --light-shadow: rgba(0, 0, 0, 0.08); /* Softer shadows */
+
+    --dark-bg: #0f0f0f; /* Deeper dark for modern feel */
+    --dark-card-bg: #1a1a1a;
+    --dark-text: #f1f5f9;
+    --dark-subtext: #94a3b8;
+    --dark-shadow: rgba(0, 0, 0, 0.4);
+
+    --accent-gradient: linear-gradient(135deg, #10b981, #34d399); /* Updated angle for diagonal flow */
+    --accent-hover-gradient: linear-gradient(135deg, #34d399, #10b981);
+
+    /* Modular Spacing for Clean, Minimal Layout (Whitespace Emphasis) */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Consistent Border Radius for Rounded, Modern Cards */
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+
+    /* Default to dark mode */
+    --bg: var(--dark-bg);
+    --card-bg: var(--dark-card-bg);
+    --text-color: var(--dark-text);
+    --subtext-color: var(--dark-subtext);
+    --shadow-color: var(--dark-shadow);
+
+    /* RGB values for Glassmorphism (transparent backgrounds with blur) */
+    --dark-card-rgb: 26, 26, 26;
+    --light-card-rgb: 255, 255, 255;
+    --card-rgb: var(--dark-card-rgb);
+}
+
+body.light-mode {
+    --bg: var(--light-bg);
+    --card-bg: var(--light-card-bg);
+    --text-color: var(--light-text);
+    --subtext-color: var(--light-subtext);
+    --shadow-color: var(--light-shadow);
+    --card-rgb: var(--light-card-rgb);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Global Transitions for Smooth Theme Switching: Applies to background, color, and borders for seamless dark/light mode */
+    font-family: var(--font-secondary);
+    background-color: var(--bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Mobile-First Responsive Container: Base padding for small screens, scales with viewport */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm); /* Smaller padding on mobile */
+}
+
+/* --- 2. Glassmorphism Navbar --- */
+header {
+    /* Glassmorphism Pattern: Semi-transparent background with backdrop blur for frosted glass effect */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: var(--spacing-md) 0;
+    background: rgba(var(--card-rgb), 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header .container {
+    /* Base: Stack on mobile for better usability */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.header-right { justify-content: flex-end; }
+
+.site-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.5rem, 5vw, 2rem); /* Responsive font sizing for titles */
+    background: var(--accent-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center; /* Center on mobile */
+}
+
+nav a {
+    color: var(--subtext-color);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    background: var(--accent-gradient);
+    color: var(--text-color);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#search-form {
+    display: flex;
+    width: 100%; /* Full width on mobile */
+    max-width: 350px; /* Limit on larger screens */
+}
+
+#search-input {
+    flex: 1; /* Take available space */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #1db954;
+}
+
+/* --- 3. Gradient Buttons --- */
+/* Gradient Buttons with Hover Animations: Shifts gradient position and adds subtle scale for interactive feedback */
+#search-form button, .gradient-btn {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: var(--accent-gradient);
+    color: white;
+    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background-position 0.4s ease, transform 0.2s ease;
+    background-size: 200% auto;
+}
+
+#search-form button:hover, .gradient-btn:hover {
+    background-position: right center;
+    transform: scale(1.05); /* Subtle scale on hover for modern button interaction */
+}
+
+main {
+    padding: var(--spacing-lg) 0; /* Responsive padding */
+}
+
+.results-info {
+    text-align: center;
+    font-size: clamp(1.4rem, 4vw, 1.8rem); /* Scalable heading */
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xl);
+}
+
+.movie-grid {
+    /* Mobile-First Grid: Single column base, expands responsively for larger screens */
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: var(--spacing-md); /* Smaller gap on mobile */
+}
+
+/* --- 4. Card-based UI with Hover Effects --- */
+/* Card Pattern: Rounded corners, soft shadows, and subtle hover lift for modern, interactive feel */
+.movie-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--shadow-color); /* Softened shadow for depth without harshness */
+    display: flex;
+    flex-direction: column;
+    opacity: 0; /* For scroll reveal */
+    transform: translateY(30px); /* For scroll reveal */
+    transition: all 0.4s ease-in-out; /* Refined easing for natural scroll reveal animation */
+}
+
+.movie-card.visible {
+    /* Scroll Reveal Animation: Fades in and slides up when in viewport for engaging load effect */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.movie-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 30px var(--shadow-color); /* Enhanced hover shadow for subtle elevation */
+}
+
+.movie-card img {
+    width: 100%;
+    height: clamp(200px, 40vw, 375px); /* Responsive height for images */
+    object-fit: cover;
+    border-radius: var(--border-radius) var(--border-radius) 0 0; /* Rounded top corners for seamless card integration */
+}
+
+.movie-card-info {
+    /* Increased whitespace for clean, readable content */
+    padding: var(--spacing-lg);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.movie-card-info p {
+    color: var(--subtext-color);
+    flex-grow: 1;
+}
+
+.movie-card-info .more-info-btn {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+
+.categories-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.category-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal {
+    /* Modal Overlay: Semi-transparent backdrop with fade-in animation for smooth presentation */
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.5s;
+}
+
+.modal-content {
+    /* Glassmorphism Pattern: Extended to modal for consistent modern UI; uses blur and transparency */
+    background: rgba(var(--card-rgb), 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 5% auto;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    animation: slideIn 0.5s;
+    box-shadow: 0 8px 30px var(--shadow-color);
+}
+
+.close-btn {
+    color: var(--subtext-color);
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-lg);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--text-color);
+}
+
+/* Keyframe Animations: Support modal fade/slide and can be extended for other reveals */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+#modal-body { 
+    /* Flex Layout for Modal: Responsive direction handled in media queries */
+    display: flex; 
+    gap: var(--spacing-lg); 
+}
+#modal-body img { 
+    max-width: 300px; 
+    height: auto; 
+    border-radius: var(--border-radius); 
+    object-fit: cover; 
+}
+.modal-info h2 { 
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive modal title */
+    background: var(--accent-gradient); 
+    background-clip: text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+.modal-info p { 
+    margin: var(--spacing-sm) 0; 
+    color: var(--subtext-color); 
+}
+.modal-info strong { 
+    color: var(--text-color); 
+}
+
+.favorite-btn {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+}
+
+.rating-section { margin-top: 1.5rem; }
+.stars { display: inline-block; }
+.star { font-size: 2rem; cursor: pointer; color: #555; transition: color 0.2s; }
+.star:hover, .star.hovered, .star.rated { color: #FFD700; }
+
+.review-section { margin-top: 1.5rem; }
+.review-section textarea { 
+    width: 100%; 
+    height: 80px; 
+    padding: var(--spacing-sm); 
+    background-color: var(--bg); 
+    color: var(--text-color); 
+    border: 1px solid var(--subtext-color); 
+    border-radius: var(--border-radius-sm); 
+    margin-bottom: var(--spacing-sm); 
+    transition: border-color 0.3s ease; /* Smooth focus transition for inputs */
+}
+.review-section textarea:focus {
+    border-color: var(--accent-gradient);
+    outline: none;
+}
+.review-section button { 
+    padding: var(--spacing-md); 
+    border-radius: var(--border-radius-sm); 
+    width: 100%; 
+}
+
+/* --- Theme Toggle --- */
+/* Theme Toggle: Simple icon switcher; JS handles class toggle and localStorage persistence */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease; /* Subtle animation on click */
+}
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* --- 6. Responsive Design (Mobile-first approach) --- */
+/* Uses min-width queries: Base is mobile, progressively enhances for larger screens to ensure performance and usability */
+@media (min-width: 481px) {
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: var(--spacing-lg);
+    }
+    .header-left, .header-right {
+        width: auto;
+    }
+    .site-title {
+        text-align: left;
+    }
+    nav a {
+        margin: 0 0 0 20px;
+    }
+    #search-form {
+        order: 1;
+    }
+    .theme-toggle {
+        order: 2;
+        width: auto;
+    }
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
+        gap: var(--spacing-md);
+    }
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    #modal-body {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+@media (min-width: 769px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: var(--spacing-lg);
+    }
+    main {
+        padding: var(--spacing-xl) 0;
+    }
+    .modal-info h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    .movie-card-info h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 481px) {
+    .movie-card-info .more-info-btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    #search-input, #search-form button {
+        font-size: 0.9rem;
+    }
+}
