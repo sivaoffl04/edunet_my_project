@@ -47,9 +47,9 @@ To run this project locally, follow these steps:
     - Open the `script.js` file.
     - Find the following line:
     javascript
-      const apiKey = '7f41639de944b72d978640a149493b8d'; // Api key for OpenWeatherMap
+      const apiKey = 'your api'; // Api key for OpenWeatherMap
 
-    - Replace `'7f41639de944b72d978640a149493b8d'` with your own API key.
+    - Replace `'API'` with your own API key.
 
 4. **Run the application:**
     - Simply open the `index.html` file in your web browser.
@@ -79,3 +79,4 @@ The application is initialized when the DOM is fully loaded.
 
 - Data provided by OpenWeatherMap.
 - Fonts provided by Google Fonts.
+
