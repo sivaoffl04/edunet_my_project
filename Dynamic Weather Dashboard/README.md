@@ -34,11 +34,14 @@ A sleek and responsive web-based weather dashboard that provides real-time weath
 
 To run this project locally, follow these steps:
 
-1. **Clone the repository:**
-    bash
-    git clone <https://github.com/your-username/weather-dashboard.git>
-    cd weather-dashboard
-
+1.  **Clone the repository:**
+     ```bash
+     git clone https://github.com/sivaoffl04/edunet_my_project.git
+     ```
+     **Navigate to the project directory:**
+     ```bash
+     cd edunet_my_project/"Dynamic Weather Dashboard"
+     ```
 2. **Get an API Key:**
     - Go to OpenWeatherMap and create a free account.
     - Navigate to the 'API keys' tab and get your unique API key.
@@ -79,4 +82,5 @@ The application is initialized when the DOM is fully loaded.
 
 - Data provided by OpenWeatherMap.
 - Fonts provided by Google Fonts.
+
 
