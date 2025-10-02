@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Recipe Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="container header-container">
+      <h1 class="app-title">Interactive Recipe Finder</h1>
+      <form id="search-form" aria-label="Recipe search form">
+        <div class="search-controls">
+          <input
+            type="text"
+            id="search-input"
+            name="search"
+            placeholder="Search recipes or ingredients..."
+            aria-label="Search recipes or ingredients"
+            autocomplete="off"
+          />
+          <button type="button" id="clear-button" aria-label="Clear search">✕</button>
+          <button type="submit" id="search-button" aria-label="Search recipes">Search</button>
+        </div>
+
+      </form>
+      <nav aria-label="Main navigation">
+        <button id="favorites-button" aria-label="View favorite recipes" class="favorites-link">Favorites ❤️</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" role="main" tabindex="-1">
+    <div id="loading-indicator" class="loading hidden" aria-live="polite">Searching for recipes...</div>
+    <section id="recipes-container" class="recipes-grid" aria-live="polite" aria-relevant="additions"></section>
+    <section id="favorites-view" class="recipes-grid hidden" aria-live="polite" aria-relevant="additions" aria-label="Favorite recipes"></section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close" aria-label="Close recipe details">&times;</button>
+      <h2 id="modal-title"></h2>
+      <img id="modal-image" alt="" />
+      <p id="modal-summary"></p>
+      <section id="modal-ingredients">
+        <h3>Ingredients</h3>
+        <ul></ul>
+      </section>
+      <section id="modal-nutrition">
+        <h3>Nutrition Highlights</h3>
+        <ul></ul>
+      </section>
+      <section id="modal-steps" class="hidden">
+        <h3>Preparation Steps</h3>
+        <ol></ol>
+      </section>
+      <a id="modal-source-link" href="#" target="_blank" rel="noopener noreferrer">View Original Recipe</a>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
